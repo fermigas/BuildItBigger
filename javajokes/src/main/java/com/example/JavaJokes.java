@@ -3,10 +3,20 @@ package com.example;
 public class JavaJokes {
 
 
-    public String getJoke(){
+    public String getJoke(String source){
 
-        return "My chemistry teacher always said, if you're not part of the solution, " +
-                "you're part of the precipitate.";
+        switch (source) {
+
+            case "java":
+                return "Java's innate.  Seven isn't inner heaven.";
+            case "android":
+                return "Did Lore have nightmares about big Data? ";
+
+            default:
+                return "You're not funny.";
+
+        }
+
     }
 
 }
