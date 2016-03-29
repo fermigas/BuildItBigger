@@ -28,7 +28,7 @@ import com.example.JavaJokes;
 public class MyEndpoint {
 
     @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
+    public MyBean sayHi() {
         MyBean response = new MyBean();
 
         JavaJokes javaJoke = new JavaJokes();

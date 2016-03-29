@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellGCEJoke(View view){
-        new EndpointsAsyncTask(this).execute(new Pair<Context, String>(this, "Manfred"));
+        new EndpointsAsyncTask(this).execute();
     }
 
 
