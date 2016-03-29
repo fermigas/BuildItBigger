@@ -20,6 +20,8 @@ class EndpointsAsyncTask extends AsyncTask<String, String, String> {
     private MainActivity mainActivity;
     private MyApi myApiService = null;
 
+    public EndpointsAsyncTask() {}  // Required for testing
+
     public EndpointsAsyncTask(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
