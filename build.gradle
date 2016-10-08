@@ -17,3 +17,30 @@ allprojects {
         jcenter()
     }
 }
+
+
+task runAllTests ( dependsOn: [ 'launchGCELocalServer', 'runTests', 'shutDownGCELocalServer']) {
+    doLast {
+        println "All Tests Completed."
+    }
+}
+
+task simulateTestsFailingDueToMissingAppengine ( dependsOn: 'runTests') {
+    // This is just so we know what failure looks like
+}
+
+
+task launchGCELocalServer ( dependsOn: ':backend:appengineRun') {
+    project(":backend").afterEvaluate { backend -> backend.extensions.appengine.daemon = true }
+    //  doLast { println "GCE Local Server Launched." }    Uncomment for testing the test
+}
+
+task runTests ( dependsOn: ':app:connectedAndroidTest') {
+    shouldRunAfter 'launchGCELocalServer'
+    //  doLast { println "runTests completed." }    Uncomment for testing the test
+}
+
+task shutDownGCELocalServer (dependsOn: ':backend:appengineStop') {
+    shouldRunAfter 'runTests'
+   //  doLast { println "GCE Local Server shut down." }    Uncomment for testing the test
+}
