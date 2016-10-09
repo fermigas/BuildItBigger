@@ -9,4 +9,5 @@
     <string name="android_key" translatable="false">android</string>
     <string name="java_key" translatable="false">java</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="local_endpoint_api">http://10.0.2.2:8080/_ah/api/</string>
 </resources>
