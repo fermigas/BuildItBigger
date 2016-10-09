@@ -8,4 +8,5 @@
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="android_key" translatable="false">android</string>
     <string name="java_key" translatable="false">java</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
 </resources>

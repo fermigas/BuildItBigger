@@ -8,17 +8,51 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.JavaJokes;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    InterstitialAd interstitialAd;
+    private AdRequest adRequest;
+    boolean adShowing = false;
+    private Intent androidJokeIntent = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // get interstitial ad going
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+
+        interstitialAd.setAdListener(new AdListener() {
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                interstitialAd.show();
+            }
+
+            @Override
+            public void onAdClosed() {
+                getInterstitialAd();  // get the next ad whenever we close one
+                if(androidJokeIntent != null)
+                    startActivity(androidJokeIntent);
+            }
+        });
+
+        // load the first add
+        getInterstitialAd();
+
     }
 
     @Override
@@ -45,13 +79,22 @@ public class MainActivity extends ActionBarActivity {
     public void tellAndroidJoke(View view){
         JavaJokes javaJoke = new JavaJokes();
         String joke = javaJoke.getJoke(getString(R.string.android_key));
-        Intent intent = new Intent(this, com.example.androidjokelib.JokeActivity.class);
-        intent.putExtra("android_joke", joke);
-        startActivity(intent);
+        androidJokeIntent = new Intent(this, com.example.androidjokelib.JokeActivity.class);
+        androidJokeIntent.putExtra("android_joke", joke);
+
+        interstitialAd.loadAd(adRequest);
     }
 
     public void tellGCEJoke(View view){
         new EndpointsAsyncTask(this).execute();
+    }
+
+    private void getInterstitialAd(){
+        adRequest = new AdRequest
+                .Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
     }
 
 
