@@ -1,10 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v4.util.Pair;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,8 +19,8 @@ public class MainActivity extends ActionBarActivity {
 
     InterstitialAd interstitialAd;
     private AdRequest adRequest;
-    boolean adShowing = false;
     private Intent androidJokeIntent = null;
+    public ProgressBar spinner;
 
 
     @Override
@@ -53,7 +51,10 @@ public class MainActivity extends ActionBarActivity {
         // load the first add
         getInterstitialAd();
 
+        spinner = (ProgressBar) findViewById(R.id.joke_progress_bar);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

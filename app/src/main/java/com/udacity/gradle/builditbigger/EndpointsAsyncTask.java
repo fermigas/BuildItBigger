@@ -1,9 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.util.Pair;
+import android.view.View;
 
 import com.example.jon.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -20,10 +19,21 @@ class EndpointsAsyncTask extends AsyncTask<String, String, String> {
     private MainActivity mainActivity;
     private MyApi myApiService = null;
 
+
     public EndpointsAsyncTask() {}  // Required for testing
 
     public EndpointsAsyncTask(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
+    }
+
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+
+        if (mainActivity.spinner != null) {
+            mainActivity.spinner.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -55,6 +65,10 @@ class EndpointsAsyncTask extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
+
+        if (mainActivity.spinner != null) {
+            mainActivity.spinner.setVisibility(View.GONE);
+        }
 
         Intent intent = new Intent(mainActivity.getApplicationContext(), com.example.androidjokelib.JokeActivity.class);
         intent.putExtra("android_joke", result);
