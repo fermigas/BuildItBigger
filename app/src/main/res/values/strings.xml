@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Build it Bigger</string>
     <string name="instructions">Press a button for a delicious joke!</string>
-    <string name="button_javalib_text">Tell Java Joke</string>
-    <string name="button_androidlib_text">Tell Android Joke</string>
-    <string name="button_GCE_text">Tell GCE Joke</string>
+    <string name="button_javalib_text">Java Joke</string>
+    <string name="button_androidlib_text">Android Joke</string>
+    <string name="button_GCE_text">GCE Joke - Loading Indicator</string>
     <string name="action_settings">Settings</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="android_key" translatable="false">android</string>

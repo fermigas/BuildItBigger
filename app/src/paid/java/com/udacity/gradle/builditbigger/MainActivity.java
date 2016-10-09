@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.JavaJokes;
@@ -15,10 +16,15 @@ import com.example.JavaJokes;
 
 public class MainActivity extends ActionBarActivity {
 
+    public ProgressBar spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        spinner = (ProgressBar) findViewById(R.id.joke_progress_bar);
+
     }
 
     @Override
