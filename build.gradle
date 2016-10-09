@@ -18,13 +18,9 @@ allprojects {
     }
 }
 
-
 task runAllTests ( dependsOn: ['launchGCELocalServer', 'runTests', 'shutDownGCELocalServer']) {
-    doLast {
-        println " ==========   All Tests Completed. ============ "
-    }
+    doLast { println " ==========   All Tests Completed. ============ " }
 }
-
 
 task launchGCELocalServer ( dependsOn: ':backend:appengineRun') {
     project(":backend").afterEvaluate { backend -> backend.extensions.appengine.daemon = true }
@@ -33,9 +29,7 @@ task launchGCELocalServer ( dependsOn: ':backend:appengineRun') {
 
 task runTests ( dependsOn: ':app:connectedAndroidTest') {
     mustRunAfter 'launchGCELocalServer'
-    doLast {
-        println " ==========   runTests completed. ==========   "
-    }
+    doLast { println " ==========   runTests completed. ==========   " }
 }
 
 task shutDownGCELocalServer (dependsOn: ':backend:appengineStop') {
