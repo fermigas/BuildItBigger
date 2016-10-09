@@ -7,6 +7,7 @@ configurations {
     paidDebugCompile
     paidReleaseCompile
 }
+
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.2'
@@ -43,6 +44,6 @@ dependencies {
     androidTestCompile 'junit:junit:4.12'
     compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:24.2.1'
-    freeDebugCompile 'com.google.android.gms:play-services-ads:8.4.0'
-    freeReleaseCompile 'com.google.android.gms:play-services-ads:8.4.0'
+    freeDebugCompile 'com.google.android.gms:play-services-ads:9.6.1'
+    freeReleaseCompile 'com.google.android.gms:play-services-ads:9.6.1'
 }
