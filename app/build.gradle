@@ -18,7 +18,17 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+
+        jackOptions {
+            enabled true
+        }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -42,6 +52,7 @@ dependencies {
     compile project(path: ':javajokes')
     compile project(path: ':androidjokelib')
     androidTestCompile 'junit:junit:4.12'
+    compile group: 'org.jacoco', name: 'org.jacoco.agent', version: '0.7.5.201505241946'
     compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:24.2.1'
     freeDebugCompile 'com.google.android.gms:play-services-ads:9.6.1'
